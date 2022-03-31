@@ -1,0 +1,3 @@
+{
+    base: '/ThreeJS-First-FPS/'
+}

@@ -1,6 +1,15 @@
 import * as THREE from 'three';
 import Player from './player';
 
+import sb_ft from "./assets/skybox/sh_ft.png";
+import sb_bk from "./assets/skybox/sh_bk.png";
+import sb_up from "./assets/skybox/sh_up.png";
+import sb_dn from "./assets/skybox/sh_dn.png";
+import sb_lf from "./assets/skybox/sh_lf.png";
+import sb_rt from "./assets/skybox/sh_rt.png";
+
+import gnd from "./assets/grassTile.png";
+
 export default class World extends THREE.Scene {
     constructor() {
         super();
@@ -34,10 +43,10 @@ export default class World extends THREE.Scene {
         // this.add(this.lightHelper);
 
         // Ground
-        const groundTexture = new THREE.TextureLoader().load("./assets/grassTile.png");
+        const groundTexture = new THREE.TextureLoader().load(gnd);
         groundTexture.wrapS = THREE.RepeatWrapping;
         groundTexture.wrapT = THREE.RepeatWrapping;
-        groundTexture.repeat.set( 12, 12 );
+        groundTexture.repeat.set(12, 12);
         this.ground = new THREE.Mesh(
             new THREE.BoxGeometry(50, 0.001, 50),
             new THREE.MeshStandardMaterial({ map: groundTexture })
@@ -59,12 +68,12 @@ export default class World extends THREE.Scene {
         this.add(this.player);
 
         // skybox
-        const ft = new THREE.TextureLoader().load("./assets/skybox/sh_ft.png");
-        const bk = new THREE.TextureLoader().load("./assets/skybox/sh_bk.png");
-        const up = new THREE.TextureLoader().load("./assets/skybox/sh_up.png");
-        const dn = new THREE.TextureLoader().load("./assets/skybox/sh_dn.png");
-        const lf = new THREE.TextureLoader().load("./assets/skybox/sh_lf.png");
-        const rt = new THREE.TextureLoader().load("./assets/skybox/sh_rt.png");
+        const ft = new THREE.TextureLoader().load(sb_ft);
+        const bk = new THREE.TextureLoader().load(sb_bk);
+        const up = new THREE.TextureLoader().load(sb_up);
+        const dn = new THREE.TextureLoader().load(sb_dn);
+        const lf = new THREE.TextureLoader().load(sb_lf);
+        const rt = new THREE.TextureLoader().load(sb_rt);
 
         const skyboxMaterialArray = [
             new THREE.MeshBasicMaterial({ map: ft, side: THREE.BackSide }),
@@ -78,13 +87,13 @@ export default class World extends THREE.Scene {
             new THREE.BoxGeometry(1000, 1000, 1000),
             skyboxMaterialArray
         )
-        
+
         this.add(this.skyBox);
     }
 
-    update(){
+    update() {
         this.player.update();
-        
+
         this.skyBox.position.copy(this.player.camera.position);
 
         const lookDir = this.player.controls.getDirection(new THREE.Vector3(0, 0, 0)).multiplyScalar(this.camSize - 1);
