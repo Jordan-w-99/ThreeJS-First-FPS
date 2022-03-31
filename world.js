@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from './three';
 import Player from './player';
 
 import sb_ft from "./assets/skybox/sh_ft.png";

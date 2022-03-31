@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls'
+import * as THREE from './three';
+import { PointerLockControls } from './three/examples/jsm/controls/PointerLockControls'
 import Camera from './camera'
 
 export default class Player extends THREE.Object3D {
