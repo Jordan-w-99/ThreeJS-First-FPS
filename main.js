@@ -1,5 +1,5 @@
-import * as THREE from './three';
-import Stats from './stats.js';
+import * as THREE from 'three';
+import Stats from 'stats.js';
 import World from './world';
 
 const stats = new Stats();

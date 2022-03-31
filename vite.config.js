@@ -1,3 +1,5 @@
-{
-    base: '/ThreeJS-First-FPS/'
-}
+import { defineConfig } from "vite";
+
+export default defineConfig({
+    base: "/ThreeJS-First-FPS/"
+})
